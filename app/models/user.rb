@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   
+  has_many :instaposts
+
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
 
