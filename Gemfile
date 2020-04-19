@@ -14,6 +14,8 @@ gem 'jquery-rails',   '~> 4.3'
 gem 'sass-rails',     '~> 6.0'
 gem 'sprockets',      '4.0.0'
 
+gem 'faker'
+
 group :development do
   gem 'byebug',                '~> 11.1'
   gem 'web-console',           '3.7.0'
