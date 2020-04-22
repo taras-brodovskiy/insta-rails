@@ -1,13 +1,26 @@
 class InstapostsController < ApplicationController
-  def new
-  end
+  before_action :authenticate_user!, except: [:show]
 
   def show
+    @instapost = Instapost.find(params[:id])
   end
 
-  def index
+  def new
+    @instapost = Instapost.new
   end
 
-  def edit
+  def create
+    @instapost = current_user.instaposts.build(instapost_params)
+    if @instapost.save
+      flash[:success] = "Instapost created!"
+      redirect_to @instapost
+    else
+      render 'new'
+    end
   end
+
+  private
+    def instapost_params
+      params.require(:instapost).permit(:caption)
+    end
 end

@@ -1,0 +1,10 @@
+<%= form_for(@instapost) do |f| %>
+  <%= render "error_messages" %>
+
+  <div class="form-group">
+    <%= f.label :caption %><br />
+    <%= f.text_field :caption, autofocus: true, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Submit!", class: "form-control btn btn-primary" %>
+<% end %>

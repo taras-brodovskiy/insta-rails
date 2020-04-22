@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  devise_for :users
+  devise_for :users  
 
-  resources :instaposts
+  resources :instaposts, except: [:edit, :update, :destroy]
+
 end
