@@ -11,7 +11,6 @@ RSpec.describe Instapost, type: :model do
   end
 
   it "isn't valid with a too long caption" do
-    author.instaposts.each { |insp| p insp }
     instapost = author.instaposts.first
     instapost.caption = "#{'a' * 1001}"
     expect(instapost).to_not be_valid

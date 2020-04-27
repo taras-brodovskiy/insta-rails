@@ -3,6 +3,7 @@ class InstapostsController < ApplicationController
 
   def show
     @instapost = Instapost.find(params[:id])
+    @user = @instapost.user
   end
 
   def new

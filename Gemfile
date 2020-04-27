@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.4'
 gem 'jquery-rails',   '~> 4.3'
 gem 'sass-rails',     '~> 6.0'
 gem 'sprockets',      '4.0.0'
+gem 'will_paginate'
 
 gem 'faker'
 
