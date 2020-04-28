@@ -17,6 +17,8 @@ gem 'will_paginate'
 
 gem 'faker'
 
+gem 'shrine',         '~> 3.2'
+
 group :development do
   gem 'byebug',                '~> 11.1'
   gem 'web-console',           '3.7.0'
