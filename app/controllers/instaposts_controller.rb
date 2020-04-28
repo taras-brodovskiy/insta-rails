@@ -22,6 +22,6 @@ class InstapostsController < ApplicationController
 
   private
     def instapost_params
-      params.require(:instapost).permit(:caption)
+      params.require(:instapost).permit(:caption, :image)
     end
 end
