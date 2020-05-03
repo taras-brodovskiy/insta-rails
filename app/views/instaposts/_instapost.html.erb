@@ -1,4 +1,2 @@
-<li class="list-group-item">
-  <div><%= link_to image_tag(instapost.image_url), instapost %></div>
-  <div class="lead"><%= instapost.caption %></div>  
-</li>
+<div><%= link_to image_tag(instapost.image_url), user_instapost_url(@user, instapost) %></div>
+<div class="lead"><%= instapost.caption %></div>

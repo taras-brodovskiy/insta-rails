@@ -8,6 +8,4 @@
   <span class="badge"><%= @user.following.size %> following</span>
 <% end %>
 <%= render 'follow_form' if user_signed_in? %>
-<ul class="list-group">
-  <%= render @instaposts %>
-</ul>
+

@@ -1,0 +1,8 @@
+<h1><%= link_to @user.username, @user %></h1>  
+<ul class="list-group">
+  <% @instaposts.each do |instapost| %>  
+  <li class="list-group-item">
+    <%= render instapost %>
+  </li>
+  <% end %>
+</ul>

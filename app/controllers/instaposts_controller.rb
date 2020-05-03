@@ -2,8 +2,13 @@ class InstapostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def show
-    @instapost = Instapost.find(params[:id])
-    @user = @instapost.user
+    @user = User.find(params[:user_id])
+    @instapost = @user.instaposts.find(params[:id])
+  end
+
+  def index
+    @user = User.find(params[:user_id])    
+    @instaposts = @user.instaposts
   end
 
   def new

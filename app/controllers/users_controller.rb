@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @instaposts = @user.instaposts
+    #feed
   end
 
   def index

@@ -1,6 +1,5 @@
 <h1><%= link_to @user.username, @user %></h1>  
 <div class="well">
-  <div><%= image_tag @instapost.image_url %></div>
-  <div class="lead"><%= @instapost.caption %></div>  
+  <%= render @instapost %>  
 </div>
 
