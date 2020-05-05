@@ -1,25 +1,24 @@
 class InstapostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  before_action :instantiate_user,   except: [:create]
 
   def show
-    @user = User.find(params[:user_id])
     @instapost = @user.instaposts.find(params[:id])
   end
 
-  def index
-    @user = User.find(params[:user_id])    
-    @instaposts = @user.instaposts
+  def index    
+    @instaposts = @user.instaposts.order(created_at: :desc)
   end
 
   def new
-    @instapost = Instapost.new
+    @instapost = @user.instaposts.build
   end
 
   def create
     @instapost = current_user.instaposts.build(instapost_params)
     if @instapost.save
       flash[:success] = "Instapost created!"
-      redirect_to @instapost
+      redirect_to user_instapost_url(current_user, @instapost)
     else
       render 'new'
     end
@@ -28,5 +27,9 @@ class InstapostsController < ApplicationController
   private
     def instapost_params
       params.require(:instapost).permit(:caption, :image)
+    end
+
+    def instantiate_user
+      @user = User.find(params[:user_id])
     end
 end

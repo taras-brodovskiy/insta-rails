@@ -1,4 +1,4 @@
-<%= form_for(@instapost) do |f| %>
+<%= form_with model: @instapost, url: user_instaposts_path(@user), local: true do |f| %>
   <%= render "error_messages" %>
 
   <div class="form-group">
