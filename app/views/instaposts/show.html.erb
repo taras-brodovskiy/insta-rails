@@ -1,5 +1,6 @@
 <h1><%= link_to @user.username, @user %></h1>  
 <div class="well">
-  <%= render @instapost %>  
+  <%= render @instapost %>
 </div>
-
+<%= render 'likes/like_form' if user_signed_in? %>
+<span class="badge" id="likes"><%= @instapost.likes.size %> likes</span>

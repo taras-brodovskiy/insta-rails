@@ -1,0 +1,7 @@
+<div id="likes_form">
+<% if current_user.likes?(@instapost) %>
+  <%= render 'likes/unlike' %>
+<% else %>
+  <%= render 'likes/like' %>
+<% end %>
+</div>

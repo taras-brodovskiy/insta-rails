@@ -4,6 +4,7 @@ class InstapostsController < ApplicationController
 
   def show
     @instapost = @user.instaposts.find(params[:id])
+    @like = Like.find_by(user: current_user)
   end
 
   def index    
@@ -17,7 +18,7 @@ class InstapostsController < ApplicationController
   def create
     @instapost = current_user.instaposts.build(instapost_params)
     if @instapost.save
-      flash[:success] = "Instapost created!"
+      flash[:notice] = "Instapost created!"
       redirect_to user_instapost_url(current_user, @instapost)
     else
       render 'new'

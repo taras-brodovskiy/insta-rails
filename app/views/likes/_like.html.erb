@@ -1,0 +1,5 @@
+<%= form_with(url: user_instapost_likes_path(@user, @instapost), remote: true) do |f| %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :instapost_id, @instapost.id %>
+  <%= f.submit "Like", class: "btn btn-primary" %>
+<% end %>

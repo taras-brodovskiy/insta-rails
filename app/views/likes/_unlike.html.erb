@@ -1,0 +1,5 @@
+<%= form_with(url: user_instapost_like_path(@user, @instapost, @like),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Unlike", class: "btn btn-danger" %>
+<% end %>

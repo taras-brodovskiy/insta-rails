@@ -3,6 +3,8 @@ class Instapost < ApplicationRecord
 
   belongs_to :user
 
+  has_many   :likes
+
   validates :caption, length: { maximum: 1000 }
 
 end
