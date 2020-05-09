@@ -1,11 +1,15 @@
 <% provide :title, @user.username %>
 
 <h1><%= @user.username %></h1>
-<%= link_to(controller: 'users', action: 'followers', id: @user) do %>
+<%= link_to controller: 'users', action: 'followers', id: @user do %>
   <span class="badge" id="followers"><%= @user.followers.size %> followers</span>
 <% end %>
-<%= link_to(controller: 'users', action: 'following', id: @user) do %>
+<%= link_to controller: 'users', action: 'following', id: @user do %>
   <span class="badge"><%= @user.following.size %> following</span>
 <% end %>
+<br>
+<br>
 <%= render 'follow_form' if user_signed_in? %>
+<br>
+<%= link_to 'Instaposts', user_instaposts_path(@user), class: 'btn btn-info' %>
 

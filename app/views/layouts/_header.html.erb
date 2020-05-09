@@ -7,6 +7,8 @@
      <li class="active"></li>
      <% if user_signed_in? %>
       <li><%= link_to "Users", users_path %></li>
+      <li><%= link_to "My instaposts", user_instaposts_path(current_user) %></li>
+      <li><%= link_to "New instapost", new_user_instapost_path(current_user) %></li>
        <li class="dropdown">
          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
          <span class="caret"></span></a>
