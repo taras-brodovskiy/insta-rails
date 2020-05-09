@@ -39,7 +39,20 @@ class User < ApplicationRecord
   end
 
   def likes?(instapost)
-    like = Like.find_by(user: self, instapost: instapost)
+    Like.find_by(user: self, instapost: instapost)
+  end
+
+  def feed_instaposts
+    query = <<~SQL
+      instaposts.user_id IN (
+                             SELECT relationships.followed_id 
+                               FROM users 
+                               JOIN relationships 
+                                 ON users.id = relationships.follower_id
+                              WHERE users.id = ?
+                            )
+      SQL
+    Instapost.where(query, self.id).order(:created_at).distinct
   end
 
   private
