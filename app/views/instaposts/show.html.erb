@@ -4,3 +4,13 @@
 </div>
 <%= render 'likes/like_form' if user_signed_in? %>
 <span class="badge" id="likes"><%= @instapost.likes.size %> likes</span>
+<div>New comment:</div>
+<%= render 'comments/comment_form' %>
+<div>Comments:</div>
+<ul class="list-group">
+  <% @comments.each do |comment| %>  
+  <li class="list-group-item">
+    <%= render comment %>
+  </li>
+  <% end %>
+</ul>

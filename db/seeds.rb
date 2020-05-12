@@ -11,7 +11,7 @@ end
 
 users = User.all
 
-# Create microposts
+# Create instaposts
 users.each do |user|
   10.times do
     caption = Faker::Movies::LordOfTheRings.quote
@@ -36,4 +36,20 @@ subleaders.each do |subleader|
   superleaders.each do |superleader|
     subleader.follow(superleader)
   end
+end
+
+# Create likes
+users.each do |user|
+  likes = Random.rand(19) + 1
+  posts = []
+  likes.times do
+    posts << Random.rand(199) + 1
+  end
+  posts.uniq!
+  posts.each do |post|
+    instapost = Instapost.find_by(id: post)
+    Like.create!(user: user, instapost: instapost)
+    caption = Faker::Movies::LordOfTheRings.quote
+    Comment.create!(user: user, instapost: instapost, caption: caption)
+  end 
 end

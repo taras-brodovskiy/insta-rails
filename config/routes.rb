@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
-    resources :instaposts, except: [:edit, :update, :destroy] do
-      resources :likes, only: [:create, :destroy]
+    resources :instaposts, except: [:edit, :update, :destroy] do      
+      resources :likes,    only:   [:create, :destroy]
+      resources :comments, only:   [:create]
     end
   end
 

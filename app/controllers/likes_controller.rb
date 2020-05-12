@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!  
-  before_action :instantiate_user_and_instapost  
+  before_action :instantiate_user_and_instapost
 
   def create
     @like = Like.new
@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     @like.instapost = @instapost
     @like.save
     respond_to do |format|
-      format.html { redirect_to user_instapost_path(@instapost.user) }
+      format.html { redirect_to user_instapost_path(@instapost.user, @instapost) }
       format.js
     end
   end
@@ -17,7 +17,7 @@ class LikesController < ApplicationController
     @like = Like.find_by(user: @user, instapost: @instapost)
     @like.delete
     respond_to do |format|
-      format.html { redirect_to user_instapost_path(@instapost.user) }
+      format.html { redirect_to user_instapost_path(@instapost.user, @instapost) }
       format.js
     end
   end

@@ -3,8 +3,9 @@ class Instapost < ApplicationRecord
 
   belongs_to :user
 
-  has_many   :likes
+  has_many   :likes,    dependent: :destroy
+  has_many   :comments, dependent: :destroy
 
-  validates :caption, length: { maximum: 1000 }
+  validates  :caption, presence: true, length: { maximum: 1000 }
 
 end

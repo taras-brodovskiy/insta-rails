@@ -5,6 +5,8 @@ class InstapostsController < ApplicationController
   def show
     @instapost = @user.instaposts.find(params[:id])
     @like = Like.find_by(user: current_user)
+    @comments = @instapost.comments
+    @comment = Comment.new
   end
 
   def index    
