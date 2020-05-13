@@ -7,6 +7,7 @@
 <div>New comment:</div>
 <%= render 'comments/comment_form' %>
 <div>Comments:</div>
+<%= will_paginate @comments %>
 <ul class="list-group">
   <% @comments.each do |comment| %>  
   <li class="list-group-item">

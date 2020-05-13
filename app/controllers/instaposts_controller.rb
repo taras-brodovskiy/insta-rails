@@ -5,12 +5,12 @@ class InstapostsController < ApplicationController
   def show
     @instapost = @user.instaposts.find(params[:id])
     @like = Like.find_by(user: current_user)
-    @comments = @instapost.comments
+    @comments = @instapost.comments.order(created_at: :desc).paginate(page: params[:page])
     @comment = Comment.new
   end
 
-  def index    
-    @instaposts = @user.instaposts.order(created_at: :desc)
+  def index
+    @instaposts = @user.instaposts.order(created_at: :desc).paginate(page: params[:page])
   end
 
   def new

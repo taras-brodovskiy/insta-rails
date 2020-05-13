@@ -11,9 +11,11 @@
 <br>
 <%= render 'follow_form' if user_signed_in? %>
 <br>
-<%= link_to 'Instaposts', user_instaposts_path(@user), class: 'btn btn-info' %>
+<%= link_to 'Instaposts', user_instaposts_path(@user), class: 'btn btn-primary' %>
 <br>
 <br>
+<div>Feed:</div>
+<%= will_paginate @instaposts %>
 <ul class="list-group">
   <% @instaposts.each do |instapost| %>  
   <li class="list-group-item">
