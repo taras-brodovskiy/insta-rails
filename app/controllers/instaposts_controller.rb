@@ -18,11 +18,13 @@ class InstapostsController < ApplicationController
   end
 
   def create
-    @instapost = current_user.instaposts.build(instapost_params)
+    @user = current_user
+    @instapost = @user.instaposts.build(instapost_params)
     if @instapost.save
-      flash[:notice] = "Instapost created!"
+      flash[:notice] = "Succesful!"
       redirect_to user_instapost_url(current_user, @instapost)
     else
+      flash[:alert] = "Unsuccessful!"
       render 'new'
     end
   end

@@ -1,5 +1,5 @@
 <%= form_with model: @instapost, url: user_instaposts_path(@user), local: true do |f| %>
-  <%= render "error_messages" %>
+  <%= render "error_messages" unless @instapost.errors.blank? %>
 
   <div class="form-group">
     <%= f.label :caption %><br />

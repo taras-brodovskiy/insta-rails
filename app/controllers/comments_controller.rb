@@ -8,10 +8,11 @@ class CommentsController < ApplicationController
     @comment.instapost = @instapost
     @comment.caption   = comment_params[:caption]
     if @comment.save
-      redirect_to user_instapost_path(@instapost.user, @instapost)
+      flash[:notice] = "Successful!"
     else
-      render 'instaposts/new'
+      flash[:alert] = "Unsuccessful!"
     end
+    redirect_to user_instapost_path(@instapost.user, @instapost)
   end
 
   private
