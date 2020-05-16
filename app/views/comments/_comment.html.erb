@@ -1,2 +1,3 @@
 <div><%= link_to comment.user.username, user_path(comment.user) %></div>
 <div><%= comment.caption %></div>
+<div class="small">Posted <%= time_ago_in_words(comment.created_at) %> ago</div>

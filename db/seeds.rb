@@ -1,7 +1,7 @@
 # Create user
 20.times do |n|
   username = Faker::Movies::LordOfTheRings.unique.character
-  email = username.downcase.delete('^a-z').concat("@mearth.com")
+  email = username.downcase.delete('^a-z').concat("@me.com")
   password = "foobar"
   password_confirmation = "foobar"
   User.create!(username: username, email: email,
@@ -9,41 +9,37 @@
                password_confirmation: password_confirmation)
 end
 
-users = User.all
-
 # Create instaposts
-users.each do |user|
-  10.times do
+users = User.all
+users.each do |user|    
+  n = Random.rand(10)  
+  n.times do
     caption = Faker::Movies::LordOfTheRings.quote
     Instapost.create!(caption: caption, user: user)
   end
 end
 
 # Create relationships between users
-leaders    = User.first(10)
-followers  = User.last(10)
-
-followers.each do |follower|
-  leaders.each do |leader|
-    follower.follow(leader)
-  end
-end
-
-superleaders = User.first(5) 
-subleaders   = User.limit(5).offset(5)
-
-subleaders.each do |subleader|
-  superleaders.each do |superleader|
-    subleader.follow(superleader)
-  end
-end
-
-# Create likes
 users.each do |user|
-  likes = Random.rand(19) + 1
+  follows = Random.rand(User.count - 2) + 1
+  followings = []
+  follows.times do
+    followings << Random.rand(User.count - 2) + 1
+  end
+  followings.uniq!
+  followings.delete(user.id)
+  followings.each do |following|
+    f = User.find(following)
+    user.follow(f)
+  end
+end
+
+# Create likes and comments
+users.each do |user|
+  likes = Random.rand(User.count - 1) + 1
   posts = []
   likes.times do
-    posts << Random.rand(199) + 1
+    posts << Random.rand(Instapost.count - 1) + 1
   end
   posts.uniq!
   posts.each do |post|
