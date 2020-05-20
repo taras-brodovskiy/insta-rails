@@ -20,7 +20,6 @@ gem 'faker'
 gem 'shrine',         '~> 3.2'
 
 group :development do
-  gem 'byebug',                '~> 11.1'
   gem 'web-console',           '3.7.0'
   gem 'listen',                '~> 3.2'
   gem 'spring',                '~> 2.1.0'
@@ -28,7 +27,8 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 4.0'
+  gem 'byebug',            '~> 11.1'
+  gem 'rspec-rails',       '~> 4.0'
   gem 'factory_bot_rails', '~> 5.1.1'
 end
 
