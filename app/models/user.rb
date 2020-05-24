@@ -56,7 +56,7 @@ class User < ApplicationRecord
                               WHERE users.id = ?
                             )
       SQL
-    Instapost.where(query, self.id).order(:created_at).distinct
+    Instapost.where(query, self.id).order(created_at: :desc).distinct
   end
 
   private
