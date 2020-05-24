@@ -12,6 +12,7 @@ FactoryBot.define do
 
   factory :instapost do
     sequence(:caption) { |n| "Instapost test caption #{n}" }
+    image_data { TestData.image_data }
     user
   end
 

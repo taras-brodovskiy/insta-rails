@@ -23,11 +23,10 @@ RSpec.describe 'Instaposts', type: :request do
     
     # Invalid try
     post user_instaposts_path, params: { instapost: { caption: '' } }
-    # assert_equal 'Unsuccessful!', flash[:alert]
     expect(flash[:alert]).to eq('Unsuccessful!')
 
     #Valid try
-    post user_instaposts_path, params: { instapost: { caption: 'Caption' } }
+    post user_instaposts_path, params: { instapost: { caption: 'Caption', image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/default.png'), 'image/png') } }
     expect(response).to redirect_to(user_instapost_url(user, assigns(:instapost)))
   end
 
