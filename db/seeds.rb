@@ -15,10 +15,11 @@ users.each do |user|
   n = Random.rand(10)  
   n.times do
     caption = Faker::Movies::LordOfTheRings.quote
-    uploader = ImageUploader.new(:store)
-    file = File.new(Rails.root.join('public/placeholders/default.png'))
-    uploaded_file = uploader.upload(file)
-    Instapost.create!(caption: caption, image_data: uploaded_file.to_json, user: user)
+    #uploader = ImageUploader.new(:store)
+    #file = File.new(Rails.root.join('public/placeholders/default.png'))
+    #uploaded_file = uploader.upload(file)
+    #Instapost.create!(caption: caption, image_data: uploaded_file.to_json, user: user)
+    Instapost.create!(caption: caption, user: user)
   end
 end
 
