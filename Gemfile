@@ -17,7 +17,7 @@ gem 'will_paginate'
 
 gem 'faker'
 
-gem 'shrine',           '~> 3.2'
+gem 'shrine',           '~> 3.3'
 gem 'image_processing', '~> 1.0'
 
 group :development do
